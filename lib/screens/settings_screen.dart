@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plzcalculator/models/settings.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -8,6 +9,8 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   Settings _settings = Settings();
+  bool _showEingabefeld = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,29 +48,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
               ),
-              Card(
-                color: Colors.blue[50],
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Flex(
-                    direction: Axis.horizontal,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Fahrtkosten / km',
-                          style: TextStyle(fontSize: 18),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    _showEingabefeld = true;
+                  });
+                },
+                child: Card(
+                  color: Colors.blue[50],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Flex(
+                      direction: Axis.horizontal,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Fahrtkosten / km',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Text(getEuro(_settings.fahrtkostenKm),
-                            textAlign: TextAlign.right,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 18,
-                            )),
-                      ),
-                    ],
+                        Expanded(
+                          child: Text(getEuro(_settings.fahrtkostenKm),
+                              textAlign: TextAlign.right,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 18,
+                              )),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -231,44 +241,46 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ],
           ),
-          Container(
-            color: Colors.grey.withOpacity(0.5),
-          ),
-          Center(
-            child: Card(
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Flex(
-                  direction: Axis.vertical,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                      child: Text(
-                        'Geben Sie den neuen Wert ein.',
-                        style: TextStyle(
-                          fontSize: 20,
+          if (_showEingabefeld)
+            Container(
+              color: Colors.grey.withOpacity(0.5),
+            ),
+          if (_showEingabefeld)
+            Center(
+              child: Card(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Flex(
+                    direction: Axis.vertical,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        child: Text(
+                          'Geben Sie den neuen Wert ein.',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 200,
-                      child: TextField(
-                        decoration: InputDecoration(
-                            labelText: 'Ihre Eingabe',
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                              color: Colors.blue,
-                            ))),
-                        keyboardType: TextInputType.number,
+                      Container(
+                        width: 200,
+                        child: TextField(
+                          decoration: InputDecoration(
+                              labelText: 'Ihre Eingabe',
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                color: Colors.blue,
+                              ))),
+                          keyboardType: TextInputType.number,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
         ],
       ),
     );

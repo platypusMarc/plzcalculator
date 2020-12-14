@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plzcalculator/models/resultat.dart';
 import 'package:plzcalculator/models/settings.dart';
 import 'package:plzcalculator/screens/calculator_screen.dart';
+import 'package:plzcalculator/screens/resultat_screen.dart';
 import 'package:plzcalculator/screens/settings_screen.dart';
 
 void main() {
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => CalculatorScreen()),
         GetPage(name: '/settings', page: () => SettingsScreen()),
+        GetPage(name: '/resultat', page: () => ResultatScreen(Resultat())),
       ],
     );
   }

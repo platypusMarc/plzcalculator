@@ -1,6 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:plzcalculator/controller/map_provider_interface.dart';
+import 'package:plzcalculator/functions/functions.dart';
+import 'package:plzcalculator/models/eingabe.dart';
+import 'package:plzcalculator/models/resultat.dart';
+import 'package:plzcalculator/screens/resultat_screen.dart';
 
 class CalculatorScreen extends StatefulWidget {
   @override
@@ -140,7 +146,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return list;
   }
 
-  void pressButton(String key) {
+  void pressButton(String key) async {
     if (key == 'DEL') {
       if (_eingabe.length > 0) {
         setState(() {
@@ -148,7 +154,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         });
       }
     } else if (key == 'OK') {
-      // TODO: Ok fehlt
+      if (_eingabe != null &&
+          _eingabe.length == 5 &&
+          Funktionen.isNumeric(_eingabe)) {
+        MapProvider mp = MapProvider();
+        Resultat resultat = await mp.getResult(Eingabe(_eingabe));
+        if (resultat != null) {
+          Get.to(ResultatScreen(resultat));
+        }
+      }
     } else {
       if (_eingabe.length < 5) {
         setState(() {
