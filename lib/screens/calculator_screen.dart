@@ -2,13 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:plzcalculator/controller/map_provider_interface.dart';
+import 'package:plzcalculator/providers/map_provider_interface.dart';
 import 'package:plzcalculator/functions/functions.dart';
 import 'package:plzcalculator/models/eingabe.dart';
 import 'package:plzcalculator/models/resultat.dart';
 import 'package:plzcalculator/screens/resultat_screen.dart';
 
 class CalculatorScreen extends StatefulWidget {
+  static String routeName = '/';
   @override
   _CalculatorScreenState createState() => _CalculatorScreenState();
 }
@@ -23,6 +24,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         title: Text(
           'PLZ-Calculator',
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Get.toNamed('/settings');
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [

@@ -7,12 +7,29 @@ import 'package:plzcalculator/screens/resultat_screen.dart';
 import 'package:plzcalculator/screens/settings_screen.dart';
 
 void main() {
-  Settings settings = Settings();
-  // TODO: Gespeicherte Werte einlesen
   runApp(MyApp());
+  // Wir öffnen zusätzlich (oben auf dem Stack) den SettingsScreen
+  // Das wird später nur dann geschehen, wenn es nicht schon abgespeicherte
+  // Settings gibt.
 }
 
 class MyApp extends StatelessWidget {
+  Settings _settings = Settings();
+  String _initialRoute;
+
+  // Im Konstruktor können wir die Settings einlesen aus einem SaveFile
+  MyApp() {
+    _settings.readFromFile();
+    // Wenn das geklappt hat, wird initialized auf true gesetzt
+    if (_settings.initialized) {
+      _initialRoute = SettingsScreen.routeName;
+    } else {
+      _initialRoute = CalculatorScreen.routeName;
+    }
+  }
+
+  // TODO: Gespeicherte Werte einlesen
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -34,12 +51,15 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: '/settings',
+      initialRoute: _initialRoute,
       // home: CalculatorScreen(),
       getPages: [
-        GetPage(name: '/', page: () => CalculatorScreen()),
-        GetPage(name: '/settings', page: () => SettingsScreen()),
-        GetPage(name: '/resultat', page: () => ResultatScreen(Resultat())),
+        GetPage(
+            name: CalculatorScreen.routeName, page: () => CalculatorScreen()),
+        GetPage(name: SettingsScreen.routeName, page: () => SettingsScreen()),
+        GetPage(
+            name: ResultatScreen.routeName,
+            page: () => ResultatScreen(Resultat())),
       ],
     );
   }

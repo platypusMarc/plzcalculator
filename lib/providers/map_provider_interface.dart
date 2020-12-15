@@ -1,4 +1,4 @@
-import 'package:plzcalculator/controller/map_provider_mock.dart';
+import 'package:plzcalculator/providers/map_provider_mock.dart';
 import 'package:plzcalculator/models/eingabe.dart';
 import 'package:plzcalculator/models/resultat.dart';
 

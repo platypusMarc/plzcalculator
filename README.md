@@ -22,10 +22,29 @@ Der frisch geschaffene Screen für das Resultat (lib/screens/resultat_screen.dar
 
 Ansonsten haben wir nur begonnen, den Settings-Screen (lib/screens/settings_screen.dart) zu dynamisieren. Ob die InputBox und die Hintergrund-Abdunklung angezeigt wird, hängt jetzt von der Variablen _showInputBox ab. Diese wird dann anfangs auf false stehen und auf true umgestellt, wenn wir zuvor eine Einstellmöglichkeit angeklickt haben. Beispielsweise umgesetzt ist das bei bei Fahrtkosten/km. Wenn man hier klickt, dann wird die Variable umgestellt, also erscheint dann die InputBox und man kann eine neue Einstellung vornehmen. Allerdings wird die Eingabe noch nirgendwohin übernommen etc.
 
+### Heimarbeit (Andreas Höfer) vom 14.12.2020
+
+Das controller-Verzeichnis wurde in provider umbenannt, einfach weil wir die Klassen ja eh jeweils MapProvider genannt haben.
+
+Der MockupProvider (lib/providers/map_provider_mock.dart) wurde umgeschrieben. Er gibt jetzt nicht immer die gleichen Werte, sondern zufällig bestimmte Werte aus, weil sich so leichter Fehler finden lassen, wenn die Zahlen etwas variieren.
+
+Der Settings-Screen ist jetzt komplett benutzbar, um alle Einstellungen vorzunehmen. Außerdem wurde er erheblich umgeschrieben, um ihn kürzer und übersichtlicher zu machen. Die meisten der Einträge werden jetzt über eine Methode ausgegeben, sodass nur noch ein Methodenaufruf passiert, anstatt jedes mal ein InkWell mit einer Karte und etlichen Paddings etc. auszuschreiben. Der Methodenaufruf ist recht komplex, weil allerhand Werte mit gegeben werden.
+
+Es wurden Vorbereitungen in main.dart getroffen, um gespeicherte Settings einzulesen, was aber noch nicht implementiert ist. Wenn keine Settings eingelesen werden konnten, also beim ersten Start der App (bzw. jetzt im Moment immer, weil wir nicht speichern können), wird man am Anfang automatisch auf den SettingsScreen geleitet, ansonsten direkt zum CalculatorScreen.
+
 ### Heimarbeit (noch in Planung)
 
 Ziel ist eigentlich, nach den Winterferien den GoogleMaps-Aufruf zu implementieren. Die reinen Optimierungen der GUI werde ich separat vornehmen. Ich habe mir vorgenommen, die folgenden Punkte zu erledigen, ohne dass wir es im Unterricht live machen:
 
-+ Leichter Umbau des MockMapProviders: Dieser soll zukünftig relativ zufällige Ergebnisse produzieren anstatt den zurzeit konstanten Werten. Auf diese Weise lassen sich besser Fehler in den Formeln finden.
 + Optimierung des Calculator-Screens: Der Screen ist gegenwärtig bei der Ausgabe auf einem Mobilgerät a) noch nicht wirklich flächendeckend. Das hängt mit der Berechnung der Bildschirmhöhe zusammen. Diese ist im Moment fehlerhaft. Die genutzte Fläche ist zu groß, weil zwar die Höhe der AppBar abgezogen wird, aber nicht die Höhe der unbenutzbaren Bildschirmbereiche unten (wo die Zurück/Home/etc-Buttons bei einem Android-Handy sind) und oben (wo zB die Kamera oder die Uhrzeitanzeige einen Teil des Bildschirms verdeckt). Außerdem braucht es eine vernünftige mathematische Lösung für die optimale Größe von Buttons auf dem Screen, damit die Tasten insgesamt den Platz auf dem Bildschirm gut ausnutzen. Außerdem wird ein alternatives Layout entwickelt, wenn jemand das Handy quer hält (Landscape-Modus), denn dann haben wir in der Vertikalen nicht genug Platz. Es müssen wahrscheinlich 6 Tasten nebeneinander angezeigt werden plus der Kasten für die Eingabe (also die 5stellige PLZ) sollte rechts oder links von den Tasten erscheinen, nicht darüber, weil in der Vertikalen kein Platz ist.
-+ Benutzbarkeit des Settings-Screens: Wenn man eine Einstellmöglichkeit anklickt, soll eine InputBox angezeigt werden, wo man die entsprechende Einstellung vornehmen kann. Außerdem braucht es einen OK-Button, damit die Einstellung übernommen wird in die Settings.
+
+## TO-DO-Liste insgesamt
+
+Die folgenden Ziele liegen noch vor uns und sollen weitestgehend im Unterricht realisiert werden:
+
++ Settings werden lokal auf dem Device abgespeichert, damit man nicht jedes Mal von vorne anfangen muss.
++ Settings werden natürlich dann auch wieder eingelesen.
++ Abruf der Daten von Google Maps.
++ Alternativ, falls möglich: Abruf der Daten von OpenStreetMaps, weil kostenlos.
++ Code-Optimierungen, geleitet von den in dem SDK eingebauten Anforderungen an gutes Design.
++ Dokumentation automatisch erstellen und verstehen.

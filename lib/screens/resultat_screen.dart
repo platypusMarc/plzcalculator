@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plzcalculator/models/resultat.dart';
 
 class ResultatScreen extends StatelessWidget {
+  static String routeName = '/resultat';
   Resultat _resultat;
 
   ResultatScreen(Resultat resultat) {
@@ -13,6 +15,14 @@ class ResultatScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Resultat'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Get.toNamed('/settings');
+            },
+          ),
+        ],
       ),
       body: Flex(direction: Axis.vertical, children: [
         Text('km: ${_resultat.fahrtstrecke}'),
