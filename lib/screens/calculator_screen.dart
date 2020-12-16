@@ -24,6 +24,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     double padY;
     double resX;
     double resY;
+    double buttSize;
     final screenPadding = MediaQuery.of(context).padding;
     const double stdPadding = 10;
 
@@ -34,7 +35,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           screenPadding.bottom -
           kToolbarHeight -
           calcHeight;
-      double buttSize;
       //resY = 10 * stdPadding + 4 * buttSize;
       double buttSizeY = (resY - 11 * stdPadding) / 4;
       resX = MediaQuery.of(context).size.width -
@@ -60,7 +60,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           screenPadding.bottom -
           kToolbarHeight -
           calcHeight;
-      double buttSize;
       double buttSizeY = (resY - 6 * stdPadding) / 2;
       resX = MediaQuery.of(context).size.width -
           screenPadding.left -
