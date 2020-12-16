@@ -48,10 +48,12 @@ Im Groben besteht die Herangehensweise eigentlich aus den folgenden Punkten:
     +   In der Höhe ist das ähnlich, nur erscheinen hier 10 Paddings und vier Buttons übereinander.Die Rechnung ist aber die gleiche.
 +   Wir wollen, dass die Buttons quadratisch sind. Da wir wissen, wie groß sie in X/Y-Richtung *maximal* sein dürfen, gilt: Der kleine der beiden Werte bestimmt die Breite *und* Höhe des Quadrats.
 +   Jetzt wissen wir die tatsächliche Größe des Buttons. In der Dimension (X oder Y), in der der Button ruhig noch größer hätte sein dürfen, weil genug Platz zur Verfügung steht, wird nun mit der feststehenden Höhe bzw. Breite erneut gerechnet, wobei aber jetzt das padX oder padY berechnet wird. Der freigewordene Platz wird also sozusagen auf die Paddings verteilt.
-+   Dann stehen alle Werte fest und sie müssen nur noch angewendet werden. Das "Taschenrechner-Display" erhält oben einen Rand von padY, links und rechts von padX und unten 2mal padY, da laut unserem Schema da zwei Abstände zur ersten Button-Reihe notwendig sind.
-+   Der Container hat nun eine Höhe, was die zuvor ausgerechnete zur Verfügung stehende Breite minus der insgesamt 3mal padY ist, die wir als Paddings schon angewendet haben auf das Display.
-+   Der Container hat ein Padding drumherum, was links und rechts jeweils padX anwendet. Seine Breite ist also auch klar.
-+   Die anderen Paddings zwischen den Tasten werden über den Abstand im Grid definiert, der halt zwischen den einzelnen Pad-Elementen jeweils 2x padX bzw. pdadY ist.
++   Dann stehen alle Werte fest und sie müssen nur noch angewendet werden.
+    +   Das "Taschenrechner-Display" erhält oben einen Rand von padY, links und rechts von padX und unten 2mal padY, da laut unserem Schema da zwei Abstände zur ersten Button-Reihe notwendig sind.
+    +   Der Container hat nun eine Höhe, was die zuvor ausgerechnete zur Verfügung stehende Breite minus der insgesamt 3mal padY ist, die wir als Paddings schon angewendet haben auf das Display.
+    +   Der Container hat ein Padding drumherum, was links und rechts jeweils padX anwendet. Seine Breite ist also auch klar.
+    +   Die anderen Paddings zwischen den Tasten werden über den Abstand im Grid definiert, der halt zwischen den einzelnen Pad-Elementen jeweils 2x padX bzw. pdadY ist.
++   Im Landscape-Modus ist die Herangehensweise dann gleich, nur dass mehr buttons nebeneinander (6) und weniger untereinander (2) dargestellt werden.
 
 ### Heimarbeit (noch in Planung)
 
