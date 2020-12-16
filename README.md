@@ -24,20 +24,23 @@ Ansonsten haben wir nur begonnen, den Settings-Screen (lib/screens/settings_scre
 
 ### Heimarbeit (Andreas Höfer) vom 14.12.2020
 
-Das controller-Verzeichnis wurde in provider umbenannt, einfach weil wir die Klassen ja eh jeweils MapProvider genannt haben.
-
-Der MockupProvider (lib/providers/map_provider_mock.dart) wurde umgeschrieben. Er gibt jetzt nicht immer die gleichen Werte, sondern zufällig bestimmte Werte aus, weil sich so leichter Fehler finden lassen, wenn die Zahlen etwas variieren.
+Das controller-Verzeichnis wurde in provider umbenannt, einfach weil wir die Klassen ja eh jeweils MapProvider genannt haben. Der MockupProvider (lib/providers/map_provider_mock.dart) wurde umgeschrieben. Er gibt jetzt nicht immer die gleichen Werte, sondern zufällig bestimmte Werte aus, weil sich so leichter Fehler finden lassen, wenn die Zahlen etwas variieren.
 
 Der Settings-Screen ist jetzt komplett benutzbar, um alle Einstellungen vorzunehmen. Außerdem wurde er erheblich umgeschrieben, um ihn kürzer und übersichtlicher zu machen. Die meisten der Einträge werden jetzt über eine Methode ausgegeben, sodass nur noch ein Methodenaufruf passiert, anstatt jedes mal ein InkWell mit einer Karte und etlichen Paddings etc. auszuschreiben. Der Methodenaufruf ist recht komplex, weil allerhand Werte mit gegeben werden.
 
 Es wurden Vorbereitungen in main.dart getroffen, um gespeicherte Settings einzulesen, was aber noch nicht implementiert ist. Wenn keine Settings eingelesen werden konnten, also beim ersten Start der App (bzw. jetzt im Moment immer, weil wir nicht speichern können), wird man am Anfang automatisch auf den SettingsScreen geleitet, ansonsten direkt zum CalculatorScreen.
 
+### Heimarbeit (Andreas Höfer) vom 15.12.2020
+
+Es wurde in erster Linie der Calculator-Screen umgeschrieben, um jetzt auch auf Mobilgeräten wirklich okay auszusehen. Dabei ging es vor allem um die Berechnung des maximal zur Verfügung stehenden Platzes. Als Ausgangsbasis wurde eine Skizze des Screens im Idealzustand angefertigt, die ich in dem Projekt hier auch gespeichert habe (material/CalculatorScreen.drawio bzw. material/CalculatorScreen.png). Draw.io ist ein kostenloses Tool, mit dem man übrigens solche und andere Grafiken (u.a. UML-Diagramme) recht komfortabel anfertigen kann. Anhand dieser Grafik konnten dann die Berechnungen entwickelt werden, die am Anfang der build-Methode in lib/screens/calculator_screen.dart nun geschehen. Ein bisschen Ausprobieren war dann natürlich trotzdem nötig, also das klappt auch nicht immer im ersten Rutsch. :-) Wie man im Code sehen kann, wird jetzt an einigen Stellen auch unterschieden zwischen Landscape- und Portrait-Modus. Auch in der Webansicht lässt sich schön beobachten, dass die Anpassung an das Browserfenster nun automatisch erfolgt.
+
+Außerdem wurde lib/main.dart dahingehend gefixt, dass man nun wirklich auf dem SettingScreen startet, was aber dynamisch ist. Hätte man ein Save-File und würde man dort bereits einmal gespeicherte Einstellungen einfach wieder einlesen, DANN würde man auf dem Calculator-Screen starten, ansonsten ist es, wie gegenwärtig, der SettingsScreen.
+
 ### Heimarbeit (noch in Planung)
 
 Ziel ist eigentlich, nach den Winterferien den GoogleMaps-Aufruf zu implementieren. Die reinen Optimierungen der GUI werde ich separat vornehmen. Ich habe mir vorgenommen, die folgenden Punkte zu erledigen, ohne dass wir es im Unterricht live machen:
 
-+ Optimierung des Calculator-Screens: Der Screen ist gegenwärtig bei der Ausgabe auf einem Mobilgerät a) noch nicht wirklich flächendeckend. Das hängt mit der Berechnung der Bildschirmhöhe zusammen. Diese ist im Moment fehlerhaft. Die genutzte Fläche ist zu groß, weil zwar die Höhe der AppBar abgezogen wird, aber nicht die Höhe der unbenutzbaren Bildschirmbereiche unten (wo die Zurück/Home/etc-Buttons bei einem Android-Handy sind) und oben (wo zB die Kamera oder die Uhrzeitanzeige einen Teil des Bildschirms verdeckt). Außerdem braucht es eine vernünftige mathematische Lösung für die optimale Größe von Buttons auf dem Screen, damit die Tasten insgesamt den Platz auf dem Bildschirm gut ausnutzen. Außerdem wird ein alternatives Layout entwickelt, wenn jemand das Handy quer hält (Landscape-Modus), denn dann haben wir in der Vertikalen nicht genug Platz. Es müssen wahrscheinlich 6 Tasten nebeneinander angezeigt werden plus der Kasten für die Eingabe (also die 5stellige PLZ) sollte rechts oder links von den Tasten erscheinen, nicht darüber, weil in der Vertikalen kein Platz ist.
-+ Optimierung des Resultat-Screens.
++ Verschönerung des Resultat-Screens.
 
 ## TO-DO-Liste insgesamt
 

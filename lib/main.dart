@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plzcalculator/models/resultat.dart';
@@ -21,9 +23,11 @@ class MyApp extends StatelessWidget {
   MyApp() {
     _settings.readFromFile();
     // Wenn das geklappt hat, wird initialized auf true gesetzt
-    if (_settings.initialized) {
+    if (!_settings.initialized) {
+      log('Route gesetzt auf Settings');
       _initialRoute = SettingsScreen.routeName;
     } else {
+      log('Route gesetzt auf Calculator');
       _initialRoute = CalculatorScreen.routeName;
     }
   }
