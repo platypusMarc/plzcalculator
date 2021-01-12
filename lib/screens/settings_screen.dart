@@ -131,15 +131,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   }
                 },
                 child: Card(
-                  color: Colors.green[50],
+                  color: Colors.green[200],
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(
                       'Änderungen übernehmen. Weiter.',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
+              ),
+              Container(
+                height: 10,
               ),
             ],
           ),

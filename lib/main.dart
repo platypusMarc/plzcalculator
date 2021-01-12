@@ -10,17 +10,19 @@ import 'package:plzcalculator/screens/settings_screen.dart';
 
 void main() {
   runApp(MyApp());
-  // Wir öffnen zusätzlich (oben auf dem Stack) den SettingsScreen
-  // Das wird später nur dann geschehen, wenn es nicht schon abgespeicherte
-  // Settings gibt.
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   Settings _settings = Settings();
   String _initialRoute;
 
-  // Im Konstruktor können wir die Settings einlesen aus einem SaveFile
-  MyApp() {
+  // Einlesen der gespeicherten Settings
+  _MyAppState() {
     _settings.readFromFile();
     // Wenn das geklappt hat, wird initialized auf true gesetzt
     if (!_settings.initialized) {
@@ -32,9 +34,6 @@ class MyApp extends StatelessWidget {
     }
   }
 
-  // TODO: Gespeicherte Werte einlesen
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

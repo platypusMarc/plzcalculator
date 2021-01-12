@@ -5,6 +5,7 @@ abstract class Funktionen {
     }
     s = s.replaceAll(',', '.');
     try {
+      // ignore: unused_local_variable
       double parseDouble = double.parse(s);
     } catch (e) {
       return false;
