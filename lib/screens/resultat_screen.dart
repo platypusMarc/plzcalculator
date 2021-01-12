@@ -4,11 +4,9 @@ import 'package:plzcalculator/models/resultat.dart';
 
 class ResultatScreen extends StatelessWidget {
   static String routeName = '/resultat';
-  Resultat _resultat;
+  final Resultat _resultat;
 
-  ResultatScreen(Resultat resultat) {
-    _resultat = resultat;
-  }
+  ResultatScreen(this._resultat);
 
   @override
   Widget build(BuildContext context) {

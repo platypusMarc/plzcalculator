@@ -55,11 +55,9 @@ Im Groben besteht die Herangehensweise eigentlich aus den folgenden Punkten:
     +   Die anderen Paddings zwischen den Tasten werden über den Abstand im Grid definiert, der halt zwischen den einzelnen Pad-Elementen jeweils 2x padX bzw. pdadY ist.
 +   Im Landscape-Modus ist die Herangehensweise dann gleich, nur dass mehr buttons nebeneinander (6) und weniger untereinander (2) dargestellt werden.
 
-### Heimarbeit (noch in Planung)
+### Heimarbeit (Andreas Höfer) vom 12.01.2021
 
-Ziel ist eigentlich, nach den Winterferien den GoogleMaps-Aufruf zu implementieren. Die reinen Optimierungen der GUI werde ich separat vornehmen. Ich habe mir vorgenommen, die folgenden Punkte zu erledigen, ohne dass wir es im Unterricht live machen:
-
-+ Verschönerung des Resultat-Screens.
+Anpassungen am ResultScreen, auf dem die Ergebnisse der eigenen PLZ-Suche nun schöner dargestellt werden, auch im Landscape-Modus.
 
 ## TO-DO-Liste insgesamt
 
