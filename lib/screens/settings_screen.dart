@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plzcalculator/models/settings.dart';
@@ -11,7 +13,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   Settings _settings = Settings();
-  bool _initializedOnStart;
+  //bool _initializedOnStart;
   bool _showEingabefeld = false;
   TextEditingController _inputBoxTextFieldController = TextEditingController();
   // Der nachfolgende Wert wird eh beim Festlegen, dass eine InputBox dargestellt wird,
@@ -25,7 +27,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void initState() {
     // Das läuft nur einmal und es sagt uns im Prinzip, ob wir am Anfang auf diese
     // Seite (statt dem Calculator) gezwungen wurden oder nicht
-    _initializedOnStart = _settings.initialized;
+    //_initializedOnStart = _settings.initialized;
     super.initState();
   }
 
@@ -120,7 +122,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               InkWell(
                 onTap: () {
-                  if (_initializedOnStart) {
+                  // if (_initializedOnStart) {
+                  log('settings.inialized: ${_settings.initialized}');
+                  if (_settings.initialized) {
                     _settings.initialized = true;
                     Get.back();
                   } else {

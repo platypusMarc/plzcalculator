@@ -17,7 +17,7 @@ class ResultatScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.settings),
             onPressed: () {
-              Get.offNamed('/settings');
+              Get.toNamed('/settings');
             },
           ),
         ],
@@ -37,10 +37,10 @@ class ResultatScreen extends StatelessWidget {
             buildHeader('Angaben zur Strecke'),
             buildCard(
               'km',
-              _resultat.fahrtstrecke.toString(),
+              '${_resultat.fahrtstrecke ~/ 1000} km',
             ),
             buildCard('Zeit',
-                '${_resultat.fahrtzeit ~/ 60} Stunden, ${_resultat.fahrtzeit % 60} Minuten'
+                '${_resultat.fahrtzeit ~/ 3600} Stunden, ${(_resultat.fahrtzeit % 3600) ~/ 60} Minuten'
                 //_resultat.fahrtkostenZeit.toString(),
                 ),
             buildHeader('Angaben zu den Kosten'),

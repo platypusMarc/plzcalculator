@@ -48,7 +48,7 @@ class Settings {
   //==========================================================================//
   void readFromFile() {
     // TODO: Muss noch implementiert werden
-    initialized = false;
+    //initialized = false;
   }
 
   void saveToFile() {

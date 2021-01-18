@@ -15,11 +15,11 @@ class MockMapProvider implements MapProvider {
         // ergibt eine km-Entfernung zwischen 1 und 500 km
         final tempo = rng.nextDouble() * 60 + 60;
         // ergibt eine D-Geschwindigkeit zwischen 60 und 120 km/h
-        final fahrtzeit = (km / tempo * 60).round();
+        final fahrtzeit = (km / tempo * 3600).round();
         // ergibt entsprechend die Fahrtzeit (die * 60 wegen der Angabe in Minuten)
 
         return Resultat(
-          fahrtstrecke: km.toDouble(),
+          fahrtstrecke: km * 1000,
           fahrtzeit: fahrtzeit,
         );
       },
