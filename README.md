@@ -59,6 +59,14 @@ Im Groben besteht die Herangehensweise eigentlich aus den folgenden Punkten:
 
 Anpassungen am ResultScreen, auf dem die Ergebnisse der eigenen PLZ-Suche nun schöner dargestellt werden, auch im Landscape-Modus.
 
+### Unterricht vom 18.01.2021
+
+Im Wesentlichen sind wir die Funktionalität nochmal durchgegangen und haben dann nur (wenn auch entscheidende) Kleinigkeiten am Code verändert. Hinzugekommen ist die Datei providers/map_provider_google.dart, mit der nun Anfragen online an die Google Maps Directions API gestellt werden können. Nach einen Experimenten wurde der API-Schlüssel eingerichtet und somit sind Anfragen in einem bestimmten Rahmen (ca. 4.000 pro Tag) gratis.
+
+### Nacharbeit (Andreas Höfer) vom 18.01.2021
+
+Damit der Zustand der App stabil ist, wurden noch Kleinigkeiten angepasst. Die Abstract Factory in /providers/map_provider_interface.dart instanziiert nun GoogleMapProvider statt MockMapProvider. Da die GoogleMaps-API die Entfernung in Metern misst und die Fahrtzeit in Sekunden und da beides (analog zu der Angabe von Euro in Cents) sinnvoll ist, da wir mit int-Werten statt double hantieren, wurde auch das Model für Resultat (/models/resultat.dart) angepasst und verwendet nun Zeitangaben in Sekunden bzw. Metern. Kleinere Anpassungen mussten auch in der GUI vorgenommen werden, um mit den neuen Werten umzugehen.
+
 ## TO-DO-Liste insgesamt
 
 Die folgenden Ziele liegen noch vor uns und sollen weitestgehend im Unterricht realisiert werden:
