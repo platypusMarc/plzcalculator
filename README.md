@@ -73,7 +73,7 @@ Die folgenden Ziele liegen noch vor uns und sollen weitestgehend im Unterricht r
 
 + Settings werden lokal auf dem Device abgespeichert, damit man nicht jedes Mal von vorne anfangen muss.
 + Settings werden natürlich dann auch wieder eingelesen.
-+ Abruf der Daten von Google Maps.
-+ Alternativ, falls möglich: Abruf der Daten von OpenStreetMaps, weil kostenlos.
++ Ggf. Login-Lösung
++ Alternativ zu GoogleMaps: Abruf der Daten von OpenStreetMaps, weil kostenlos.
 + Code-Optimierungen, geleitet von den in dem SDK eingebauten Anforderungen an gutes Design.
 + Dokumentation automatisch erstellen und verstehen.
