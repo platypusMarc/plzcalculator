@@ -14,7 +14,7 @@ class Resultat {
   int summe = 0;
   int mwst = 0;
   int bruttosumme = 0;
-
+// Hier ein kleiner Kommentar
   Resultat({
     this.fahrtstrecke,
     this.fahrtzeit,
