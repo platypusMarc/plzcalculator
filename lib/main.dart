@@ -12,8 +12,6 @@ void main() {
   runApp(MyApp());
 }
 
-//ihigigm,,iigijiojiojio
-
 
 /// Applikation-Objekt
 class MyApp extends StatefulWidget {
