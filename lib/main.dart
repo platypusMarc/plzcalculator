@@ -11,7 +11,7 @@ import 'package:plzcalculator/screens/settings_screen.dart';
 void main() {
   runApp(MyApp());
 }
-
+// einen Kommentar bitte
 
 /// Applikation-Objekt
 class MyApp extends StatefulWidget {
